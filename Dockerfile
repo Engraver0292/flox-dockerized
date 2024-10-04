@@ -6,7 +6,7 @@ RUN \
   apk add git && \
   git clone https://github.com/Simounet/flox.git /build/flox && \
   cd /build/flox/backend && \
-  composer install
+  composer install --no-dev -o --prefer-dist
 
 ###########################################
 
