@@ -50,7 +50,7 @@ RUN \
           /app/flox/backend/.env && \
   echo "**** other preparation ****" && \
   mkdir -p /run/php/ && \
-  touch /run/php/php7.4-fpm.sock && \
+  touch /run/php/php8.2-fpm.sock && \
   sed -i \
       -e 's,user =.*,user = abc,g' \
       -e 's,group =.*,group = abc,g' \
