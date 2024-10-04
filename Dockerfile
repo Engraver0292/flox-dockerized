@@ -45,6 +45,7 @@ RUN \
   cd /app/flox/backend && \
   php artisan flox:init --no-interaction "${db_path}" && \
   sed -i \
+      -e 's,TMDB_API_KEY=.*,"YOUR_API_KEY_HERE",g' \ #CHANGED THIS
       -e 's,DB_CONNECTION=.*,DB_CONNECTION=sqlite,g' \
       -e 's,DB_DATABASE=.*,DB_DATABASE='"${db_path}"',g' \
           /app/flox/backend/.env && \
