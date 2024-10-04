@@ -15,7 +15,7 @@ FROM debian:latest
 # set version label
 ARG BUILD_VERSION
 ENV FLOX_VERSION=${BUILD_VERSION}
-ENV TMDB_API_KEY="YOUR_API_KEY_HERE"
+ENV TMDB_API_KEY=fdgfdgdfgfd
 LABEL version="${BUILD_VERSION}"
 LABEL maintainer="Ivan Schaller"
 LABEL description="A personal watchlist"
