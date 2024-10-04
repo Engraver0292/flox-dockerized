@@ -1,16 +1,16 @@
-FROM composer:1.10.17 AS composer
+FROM composer:latest AS composer
 
 # build flox
 RUN \
   echo "**** building flox ****" && \
   apk add git && \
-  git clone --branch master https://github.com/devfake/flox.git /build/flox && \
+  git clone https://github.com/Simounet/flox.git /build/flox && \
   cd /build/flox/backend && \
   composer install
 
 ###########################################
 
-FROM cr.44net.ch/baseimages/debian-s6:11.5.5
+FROM debian:latest
 
 # set version label
 ARG BUILD_VERSION
@@ -31,8 +31,8 @@ RUN \
   apt-get update && \
   apt-get install -y --no-install-recommends \
       sqlite3 \
-      php7.4 \
-      php7.4-sqlite3 \
+      php8.2 \
+      php8.2-sqlite3 \
       php-fpm \
       php-xml \
       php-mbstring \
@@ -56,7 +56,7 @@ RUN \
       -e 's,group =.*,group = abc,g' \
       -e 's,listen.owner =.*,listen.owner = abc,g' \
       -e 's,listen.group =.*,listen.group = abc,g' \
-          /etc/php/7.4/fpm/pool.d/www.conf && \
+          /etc/php/8.2/fpm/pool.d/www.conf && \
   chown -R abc:abc /app/flox && \
   echo "**** cleanup ****" && \
   apt-get purge --auto-remove -y && \
